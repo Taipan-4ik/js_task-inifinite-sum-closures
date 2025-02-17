@@ -3,8 +3,14 @@
 /***
  * @return {function}
  */
-function makeInfinityAdder() {
-  // write code here
+function makeInfinityAdder(a = 0) {
+  return function (b) {
+    if (b !== undefined) {
+      return makeInfinityAdder(a + b);
+    } else {
+      return a;
+    }
+  };
 }
 
 module.exports = makeInfinityAdder;
