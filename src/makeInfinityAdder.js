@@ -3,16 +3,22 @@
 /***
  * @return {function}
  */
+let sum = 0;
+
 function makeInfinityAdder(a) {
   if (a === undefined) {
-    return makeInfinityAdder(0);
+    sum = 0;
+
+    return sum;
   }
 
   return function (b) {
     if (b !== undefined) {
-      return makeInfinityAdder(a + b);
+      sum = a + b;
+
+      return makeInfinityAdder(sum);
     } else {
-      return a;
+      return sum;
     }
   };
 }
